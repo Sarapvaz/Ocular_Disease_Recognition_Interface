@@ -27,7 +27,7 @@ def call_api():
     file = {'file': uploaded_file}
     response = requests.post(url, files=file)
     prediction = response.json()
-    st.text("Eye Eye Captain!")
+    st.text("Eye-Eye Captain!")
     st.markdown("<br>",unsafe_allow_html=True)
     st.write("""### Patient's Results:
 
@@ -42,7 +42,7 @@ def call_api():
     st.write(f'''
         * Probablity of having **myopia**: {prediction['myopia']}%''')
     st.markdown("<br>",unsafe_allow_html=True)
-    if prediction['cataract'] or prediction['glaucoma'] or prediction['myopia'] >= 50:
+    if prediction['cataract'] >= 50 or prediction['glaucoma'] >= 50 or prediction['myopia'] >= 50:
         st.write('''##### :warning: **Since at least one of the results is higher than 50%,**\n##### **we recommend a more detailed examination!**''')
 
 #Defining columns
@@ -71,7 +71,7 @@ with c_left:
     st.markdown("<br><br><br><br><br>",unsafe_allow_html=True)
     logo_img = Image.open("logo.png")
     st.image(logo_img, width=200, channels='RGB',output_format=' ')
-    st.write("""**Authors**: João Pimenta, João Santos, Maureen Dupret, Sara Vaz.""")
+    st.write("""**Authors**: João Pimenta, João Santos, Maureen Dupret, Sara Vaz""")
     st.write("""*Data Science Batch #1157 Lisbon, 2023*""")
 
 
