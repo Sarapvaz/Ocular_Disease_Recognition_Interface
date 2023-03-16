@@ -78,7 +78,7 @@ with c_left:
 with c_right:
     st.write('')
     st.write('')
-    page_img = Image.open("image.jpg")
+    page_img = Image.open("image.png")
     st.image(page_img, width=450, channels='RGB',output_format='auto')
     st.markdown("<br><br><br>",unsafe_allow_html=True)
 
