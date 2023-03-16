@@ -29,21 +29,38 @@ def call_api():
     prediction = response.json()
     st.text("Eye-Eye Captain!")
     st.markdown("<br>",unsafe_allow_html=True)
-    st.write("""### Patient's Results:
-
-        """)
-    #st.markdown("<br>",unsafe_allow_html=True)
-    st.write(f'''
-        * Probablity of having **cataract**: {prediction['cataract']}%''')
-    #st.markdown("<br>",unsafe_allow_html=True)
-    st.write(f'''
-        * Probablity of having **glaucoma**: {prediction['glaucoma']}%''')
-    #st.markdown("<br>",unsafe_allow_html=True)
-    st.write(f'''
-        * Probablity of having **myopia**: {prediction['myopia']}%''')
+    st.write("""### Patient's Results:""")
     st.markdown("<br>",unsafe_allow_html=True)
     if prediction['cataract'] >= 50 or prediction['glaucoma'] >= 50 or prediction['myopia'] >= 50:
-        st.write('''##### :warning: **Since at least one of the results is higher than 50%,**\n##### **we recommend a more detailed examination!**''')
+        st.write('''##### :warning: **We recommend a more detailed examination!**''')
+    else:
+        st.write('''##### :thumbsup: **Looking healthy!**''')
+    st.markdown("<br>",unsafe_allow_html=True)
+
+    if prediction['cataract'] >= 50:
+        st.write(f'''
+        * Probablity of having **cataract**: :red[{prediction['cataract']}%]''')
+    else:
+        st.write(f'''
+        * Probablity of having **cataract**: :green[{prediction['cataract']}%]''')
+    st.markdown("<br>",unsafe_allow_html=True)
+
+    if prediction['glaucoma'] >= 50:
+        st.write(f'''
+        * Probablity of having **glaucoma**: :red[{prediction['glaucoma']}%]''')
+    else:
+        st.write(f'''
+        * Probablity of having **glaucoma**: :green[{prediction['glaucoma']}%]''')
+    st.markdown("<br>",unsafe_allow_html=True)
+
+    if prediction['myopia'] >= 50:
+        st.write(f'''
+        * Probablity of having **myopia**: :red[{prediction['myopia']}%]''')
+    else:
+        st.write(f'''
+        * Probablity of having **myopia**: :green[{prediction['myopia']}%]''')
+    st.markdown("<br>",unsafe_allow_html=True)
+
 
 #Defining columns
 c_left, c_right = st.columns(2, gap="large")
