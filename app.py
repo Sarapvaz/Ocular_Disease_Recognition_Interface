@@ -46,7 +46,7 @@ def call_api():
         st.write('''##### :warning: **Since at least one of the results is higher than 50%,**\n##### **we recommend a more detailed examination!**''')
 
 #Defining columns
-c_left, c_right = st.columns(2, gap="medium")
+c_left, c_right = st.columns(2, gap="large")
 
 with c_left:
     st.title("Ocular Disease Recognition")
